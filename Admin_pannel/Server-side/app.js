@@ -9,11 +9,16 @@ const admin = require("./router/admi-router");
 const connectDB = require("./utils/db");
 const errorMiddleware = require("./Meddileware/error-meddileware");
 
-// handle cors
-const CorsOption = {
-  origin: "http://localhost:5173",
-  method: "GET ,POST,PUT,DELETE,PATCH,HEAD",
-  Credential: true,
+// Updated CORS configuration
+const corsOptions = {
+  origin: [
+    "http://localhost:5173", // Your local development
+    "https://adimn-pannel.vercel.app", // Your Vercel frontend
+    "https://adimn-pannel-dev.onrender.com" // Your Render backend (if needed)
+  ],
+  methods: "GET,POST,PUT,DELETE,PATCH,HEAD",
+  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"]
 };
 
 app.use(cors(CorsOption));

@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server-side/app.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "client-side/vite.config.js",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "client-side/dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "server-side/app.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "client-side/dist/$1"
+    }
+  ]
+}

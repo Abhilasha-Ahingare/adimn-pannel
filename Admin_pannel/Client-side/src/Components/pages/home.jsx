@@ -11,28 +11,27 @@ const HomePage = () => {
   return (
     <>
       <div className="home-container">
-        {/* hero section */}
+        {/* hero section */}{" "}
         <div className="hero-section">
-          <div className="hero-image">
-            <img src="https://picsum.photos/600/400" alt="Welcome" />
-          </div>
-          <div className="hero-text">
-            <h1>
-              Hey,{isLogIn ? user?.username : "Guest"} 👋 <br />
-              Welcome to Our Platform
-            </h1>
-            <p>
-              Your complete solution provider. We help you explore the best
-              products with seamless services and guaranteed satisfaction.
-            </p>
+          <div className="hero-content">
+            <div className="hero-text">
+              <h1>
+                Hey,{isLogIn ? user?.username : "Guest"} 👋 <br />
+                Welcome to Our Platform
+              </h1>
+              <p>
+                Your complete solution provider. We help you explore the best
+                products with seamless services and guaranteed satisfaction.
+              </p>
+            </div>
+            <div className="hero-image">
+              <img src="https://picsum.photos/600/400" alt="Welcome" />
+            </div>
           </div>
         </div>
-
         {/* products */}
         <ProductPage />
-
         <FeatucreSection />
-
         <section className="about-section">
           <h2>About Us</h2>
           <div className="about-content">

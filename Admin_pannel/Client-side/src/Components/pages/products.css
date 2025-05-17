@@ -1,25 +1,54 @@
 /* Services Section */
 .section-services {
-  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e8eaf6 100%);
+  padding: 5rem 1rem;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-services::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 20% 50%,
+      rgba(52, 152, 219, 0.05) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(46, 204, 113, 0.05) 0%,
+      transparent 50%
+    );
 }
 
 .product-container {
-  max-width: 1300px;
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
-  justify-content: center;
+  padding: 2rem;
+  z-index: 1;
 }
 
 .main-heading {
-  width: 100%;
   text-align: center;
   font-size: 3rem;
+  font-weight: 700;
   color: #2c3e50;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   position: relative;
+  background: linear-gradient(45deg, #2c3e50, #3498db);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .main-heading::after {
@@ -27,77 +56,147 @@
   display: block;
   width: 80px;
   height: 4px;
-  background: #3498db;
-  margin: 10px auto 0;
+  background: linear-gradient(45deg, #3498db, #2ecc71);
+  margin: 1rem auto 0;
   border-radius: 2px;
 }
 
 .card {
-  background: #fff;
-  border-radius: 16px;
-  width: 280px;
+  position: relative;
+  background: #ffffff;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .img-card {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
   position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.img-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.5));
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .img-card::before {
+  opacity: 1;
 }
 
 .img-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s ease;
 }
 
 .card:hover .img-card img {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .card-price {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: #2c3e50;
-  color: #fff;
-  padding: 0.4rem 0.8rem;
+  padding: 0.5rem 1rem;
+  background: rgba(44, 62, 80, 0.9);
+  color: #ffffff;
+  font-weight: 600;
   border-radius: 20px;
-  font-size: 1rem;
-  font-weight: bold;
+  backdrop-filter: blur(4px);
   z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-price {
+  transform: scale(1.1);
 }
 
 .text-area {
-  padding: 1rem;
+  padding: 1.5rem;
+  background: #ffffff;
   text-align: center;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .card-title {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  color: #34495e;
-  margin-top: 0.5rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.card:hover .card-title {
+  color: #3498db;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add animation delay for each card */
+.card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+@media (max-width: 1200px) {
+  .product-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
+  .section-services {
+    padding: 2rem 1rem;
+  }
+
   .main-heading {
     font-size: 2.5rem;
+    margin-bottom: 2.5rem;
   }
 
   .card {
@@ -106,13 +205,22 @@
   }
 
   .img-card {
-    height: 180px;
+    height: 200px;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 480px) {
   .main-heading {
     font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .text-area {
+    padding: 1rem;
   }
 
   .card-title {
@@ -122,5 +230,14 @@
   .card-price {
     font-size: 0.9rem;
     padding: 0.3rem 0.6rem;
+  }
+
+  .product-container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .img-card {
+    height: 180px;
   }
 }

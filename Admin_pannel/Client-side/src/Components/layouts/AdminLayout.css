@@ -4,7 +4,10 @@
   background: linear-gradient(135deg, #f0f2f5, #e8eaf6);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px; /* Space for fixed navbar */
 }
 
 /* Top Navbar */

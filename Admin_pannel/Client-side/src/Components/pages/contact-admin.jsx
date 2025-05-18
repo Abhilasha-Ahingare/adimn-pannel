@@ -29,16 +29,13 @@ const ContactAdmin = () => {
 
   const handleDeleteContact = async (id) => {
     try {
-      const response = await fetch(
-        `${apiUrl}/api/admin/contact/delete/${id}`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: authorization,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`${apiUrl}/api/admin/contact/delete/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: authorization,
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.ok) {
         getAllContactAdmin();
@@ -71,10 +68,10 @@ const ContactAdmin = () => {
             <tbody>
               {users.map((user) => (
                 <tr key={user._id}>
-                  <td>{user.username}</td>
-                  <td>{user.email}</td>
-                  <td>{user.message}</td>
-                  <td>
+                  <td data-label="Username">{user.username}</td>
+                  <td data-label="Email">{user.email}</td>
+                  <td data-label="Message">{user.message}</td>
+                  <td data-label="Action">
                     <button
                       className="delete-btn"
                       onClick={() => handleDeleteContact(user._id)}

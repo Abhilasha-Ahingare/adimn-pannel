@@ -1,7 +1,7 @@
 import React from "react";
 import { HiOutlineCreditCard, HiShoppingBag } from "react-icons/hi";
 import { HiArrowPathRoundedSquare } from "react-icons/hi2";
-import "./products.css"; 
+import "./featcure.css";
 
 const FeatucreSection = () => {
   return (
@@ -12,8 +12,8 @@ const FeatucreSection = () => {
           <div className="feature-icon">
             <HiShoppingBag className="icon" />
           </div>
-          <h4 className="feature-title">free international shiping</h4>
-          <p className="feature-description">on all order over $100.0</p>
+          <h4 className="feature-title">Free International Shipping</h4>
+          <p className="feature-description">On all orders over $100.00</p>
         </div>
 
         {/* feature 2 */}
@@ -21,8 +21,8 @@ const FeatucreSection = () => {
           <div className="feature-icon">
             <HiArrowPathRoundedSquare className="icon" />
           </div>
-          <h4 className="feature-title">45 Days return</h4>
-          <p className="feature-description">money back guarantee</p>
+          <h4 className="feature-title">45 Days Return</h4>
+          <p className="feature-description">Money back guarantee</p>
         </div>
 
         {/* feature 3 */}
@@ -30,8 +30,8 @@ const FeatucreSection = () => {
           <div className="feature-icon">
             <HiOutlineCreditCard className="icon" />
           </div>
-          <h4 className="feature-title">SECURE CHECKOUT</h4>
-          <p className="feature-description">100% secure checkout procress</p>
+          <h4 className="feature-title">Secure Checkout</h4>
+          <p className="feature-description">100% safe & encrypted</p>
         </div>
       </div>
     </section>

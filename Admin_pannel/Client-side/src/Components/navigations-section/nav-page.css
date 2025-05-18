@@ -16,7 +16,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 15px;
+  padding: 0 1rem;
 }
 
 .logo-brand {
@@ -51,6 +51,7 @@ nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  align-items: center;
 }
 
 nav ul li a {
@@ -86,31 +87,23 @@ nav ul li a:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
+/* Mobile menu button */
 .mobile-menu-btn {
   display: none;
   background: none;
   border: none;
   color: #c2bfbf;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   cursor: pointer;
   padding: 0.5rem;
 }
 
 @media (max-width: 768px) {
-  header {
-    padding: 0.6rem 0;
-  }
-
   .mobile-menu-btn {
     display: block;
   }
 
-  .logo-brand a {
-    font-size: 1.2rem;
-  }
-
-  nav ul {
-    display: none;
+  nav {
     position: absolute;
     top: 100%;
     left: 0;
@@ -118,23 +111,28 @@ nav ul li a:hover {
     background: rgba(26, 31, 36, 0.95);
     backdrop-filter: blur(10px);
     flex-direction: column;
-    padding: 1rem 0;
-    gap: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: none;
   }
 
-  nav ul.active {
+  nav.active {
     display: flex;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    padding: 1rem 0;
   }
 
   nav ul li {
     width: 100%;
+    text-align: left;
   }
 
   nav ul li a {
-    padding: 1rem 2rem;
     display: block;
-    text-align: left;
+    padding: 1rem 2rem;
     border-radius: 0;
   }
 
@@ -145,10 +143,6 @@ nav ul li a:hover {
   nav ul li a:hover {
     background: rgba(255, 255, 255, 0.05);
     color: #3498db;
-  }
-
-  nav ul li:last-child a {
-    border-bottom: none;
   }
 }
 

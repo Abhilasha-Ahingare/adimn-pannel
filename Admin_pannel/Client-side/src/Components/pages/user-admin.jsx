@@ -7,7 +7,7 @@ import "./adminUser.css";
 const apiUrl = import.meta.env.VITE_SERVER_URL;
 
 const UserAdmin = () => {
-  const { authorization, user } = UserAuth();
+  const { authorization } = UserAuth();
   const [users, setUsers] = useState([]);
 
   // Fetch all users
@@ -98,14 +98,15 @@ const UserAdmin = () => {
       </div>
       <div className="admin-users">
         {users && users.length > 0 ? (
-          <table className="user-grid">
+          <table className="user-grid-admin">
             <thead>
               <tr>
-                <th>name</th>
-                <th>email</th>
-                <th>phone</th>
-                <th>delete</th>
-                <th>edit</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Admin</th>
               </tr>
             </thead>
             <tbody>
@@ -120,7 +121,6 @@ const UserAdmin = () => {
                   <td>
                     <button onClick={() => deleteUser(user._id)}>Delete</button>
                   </td>
-
                   <td>
                     <button onClick={() => AdminUpdate(user._id)}>
                       {user.isAdmin ? "Revoke Admin" : "Make Admin"}

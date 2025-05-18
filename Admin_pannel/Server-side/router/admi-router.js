@@ -25,19 +25,13 @@ router
   .delete(authMiddleware, adminMiddleware, AllUserData.deleteUser);
 
 router.patch(
-  "/users/make-admin/:id",
+  "/users/update-Admin/:id",
   authMiddleware,
   adminMiddleware,
-  AllUserData.MakeAdmin
-);
-router.patch(
-  "/users/remove-admin/:id",
-  authMiddleware,
-  adminMiddleware,
-  AllUserData.RemoveAdmin
+  AllUserData.updateAdmin
 );
 
-//conact
+//contact
 
 router
   .route("/contact")

@@ -7,7 +7,7 @@ import "./adminUser.css";
 const apiUrl = import.meta.env.VITE_SERVER_URL;
 
 const UserAdmin = () => {
-  const { authorization } = UserAuth();
+  const { authorization, user } = UserAuth();
   const [users, setUsers] = useState([]);
 
   // Fetch all users
@@ -44,6 +44,7 @@ const UserAdmin = () => {
       });
 
       if (response.ok) {
+        toast.success("User deleted successfully");
         getAllUserData();
       }
 
@@ -56,10 +57,10 @@ const UserAdmin = () => {
 
   //admin make
 
-  const AdminMake = async (id) => {
+  const AdminUpdate = async (id) => {
     try {
       const response = await fetch(
-        `${apiUrl}/api/admin/users/make-admin/${id}`,
+        `${apiUrl}/api/admin/users/update-Admin/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -69,37 +70,23 @@ const UserAdmin = () => {
         }
       );
 
-      if (response.ok) {
-        getAllUserData();
-        toast.success("user is successfully promoted to admin");
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Failed to update user");
       }
+
+      const statusText = result.user.isAdmin
+        ? "now admin"
+        : "admin access removed";
+      toast.success(`User is ${statusText}`);
+
+      getAllUserData();
     } catch (error) {
-      toast.error("user is not found");
+      toast.error(error.message || "Something went wrong");
     }
   };
 
-  //remove admin
-  const RemoveAdmin = async (id) => {
-    try {
-      const response = await fetch(
-        `${apiUrl}/api/admin/users/remove-admin/${id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: authorization,
-          },
-        }
-      );
-
-      if (response.ok) {
-        getAllUserData();
-        toast.success(" remove admin permission");
-      }
-    } catch (error) {
-      toast.error("user is not found");
-    }
-  };
   useEffect(() => {
     getAllUserData();
   }, []);
@@ -128,7 +115,6 @@ const UserAdmin = () => {
                   <td>{user.email}</td>
                   <td>{user.phone}</td>
                   <td>
-                    {/* Correct use of Link for navigation */}
                     <Link to={`/admin/users/update/${user._id}`}>Edit</Link>
                   </td>
                   <td>
@@ -136,11 +122,8 @@ const UserAdmin = () => {
                   </td>
 
                   <td>
-                    <button
-                      onClick={() => AdminMake(user._id)}
-                      onDoubleClick={() => RemoveAdmin(user._id)}
-                    >
-                      {user.isAdmin === true ? "Admin" : "guest"}
+                    <button onClick={() => AdminUpdate(user._id)}>
+                      {user.isAdmin ? "Revoke Admin" : "Make Admin"}
                     </button>
                   </td>
                 </tr>

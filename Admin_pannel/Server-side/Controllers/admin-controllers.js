@@ -96,41 +96,63 @@ const getAllService = async (req, res, next) => {
   }
 };
 
-const MakeAdmin = async (req, res, next) => {
+// const MakeAdmin = async (req, res, next) => {
+//   try {
+//     const userId = req.params.id;
+
+//     const user = await User.findById(userId);
+
+//     if (!user) return res.status(404).json({ message: "User not found" });
+
+//     if (user.isAdmin === true)
+//       return res.status(400).json({ message: "User is already admin" });
+
+//     user.isAdmin = true;
+//     await user.save();
+
+//     res.status(200).json({ message: "Admin access granted", user });
+//   } catch (error) {
+//     res.status(500).json({ message: "Something went wrong" });
+//   }
+// };
+
+// const RemoveAdmin = async (req, res) => {
+//   try {
+
+//   //    const { id } = req.params;
+//   // const user = await User.findByIdAndUpdate(id, { isAdmin: true }, { new: true });
+//   // res.json(user);
+//     const userId = req.params.id;
+
+//     const user = await User.findById(userId);
+
+//     if (!user) return res.status(404).json({ message: "User not found" });
+
+//     if (user.isAdmin === false)
+//       return res.status(400).json({ message: "User is not admin" });
+
+//     user.isAdmin = false;
+//     await user.save();
+
+//     res.status(200).json({ message: "remove admin promited", user });
+//   } catch (error) {
+//     res.status(500).json({ message: "Something went wrong" });
+//   }
+// };
+
+const updateAdmin = async (req, res) => {
   try {
-    const userId = req.params.id;
-
-    const user = await User.findById(userId);
-
+    const { id } = req.params;
+    const user = await User.findByIdAndUpdate(id);
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    if (user.isAdmin === true)
-      return res.status(400).json({ message: "User is already admin" });
-
-    user.isAdmin = true;
+    if (user.isAdmin === false) {
+      user.isAdmin = true;
+    } else if (user.isAdmin === true) {
+      user.isAdmin = false;
+    }
     await user.save();
-
-    res.status(200).json({ message: "Admin access granted", user });
-  } catch (error) {
-    res.status(500).json({ message: "Something went wrong" });
-  }
-};
-
-const RemoveAdmin = async (req, res) => {
-  try {
-    const userId = req.params.id;
-
-    const user = await User.findById(userId);
-
-    if (!user) return res.status(404).json({ message: "User not found" });
-
-    if (user.isAdmin === false)
-      return res.status(400).json({ message: "User is not admin" });
-
-    user.isAdmin = false;
-    await user.save();
-
-    res.status(200).json({ message: "remove admin promited", user });
+    res.status(200).json({ message: "user update sucessfully", user });
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });
   }
@@ -143,6 +165,5 @@ module.exports = {
   SingleUser,
   UpdateUser,
   deleteContact,
-  MakeAdmin,
-  RemoveAdmin,
+  updateAdmin,
 };

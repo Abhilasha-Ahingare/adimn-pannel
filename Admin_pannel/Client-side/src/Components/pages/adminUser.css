@@ -9,23 +9,17 @@
 
 .user-container {
   max-width: 1200px;
-  margin: 0 auto 2rem;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  overflow: hidden;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .admin-users-title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  text-align: center;
+  font-size: 2rem;
   color: #2c3e50;
-  margin: 2rem 0;
-  padding: 0 1rem;
-  position: relative;
+  margin: 1rem 0;
+  text-align: center;
 }
 
 .admin-users-title::after {
@@ -40,73 +34,51 @@
 
 .admin-users {
   width: 100%;
-  overflow-x: auto;
-  padding: 1rem;
 }
 
 .user-grid {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  background: transparent;
+  border-collapse: collapse;
+  background: white;
 }
 
 .user-grid thead {
-  background: linear-gradient(to right, #2c3e50, #3498db);
+  background: #2c3e50;
   color: white;
 }
 
 .user-grid th {
-  padding: 1.2rem 1.5rem;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  padding: 1rem;
   text-align: left;
-  white-space: nowrap;
+  font-weight: 600;
 }
 
 .user-grid td {
-  padding: 1.2rem 1.5rem;
-  background: rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  font-size: 0.95rem;
-  color: #2c3e50;
-  transition: all 0.3s ease;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
 }
 
 .user-grid tr:hover td {
-  background: rgba(255, 255, 255, 0.95);
-  transform: translateY(-1px);
+  background: #f8f9fa;
 }
 
 .user-grid button {
   background: #e74c3c;
   color: white;
-  padding: 0.6rem 1.2rem;
   border: none;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(231, 76, 60, 0.2);
 }
 
 .user-grid button:hover {
   background: #c0392b;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
 }
 
 .user-grid a {
   color: #3498db;
   text-decoration: none;
   font-weight: 500;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  display: inline-block;
 }
 
 .user-grid a:hover {
@@ -127,11 +99,11 @@
 
 @media (max-width: 768px) {
   .admin-users-container {
-    padding: 1rem;
+    padding: 0.5rem;
   }
 
   .admin-users-title {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
   }
 
   .user-container {
@@ -139,12 +111,15 @@
   }
 
   .user-grid {
-    font-size: 0.9rem;
+    display: block;
+    overflow-x: auto;
   }
 
   .user-grid th,
   .user-grid td {
-    padding: 0.8rem;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
   }
 
   .user-grid button,
@@ -154,21 +129,14 @@
   }
 }
 
-.admin-users::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
+@media (max-width: 480px) {
+  .admin-users-title {
+    font-size: 1.5rem;
+  }
 
-.admin-users::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
-}
-
-.admin-users::-webkit-scrollbar-thumb {
-  background: rgba(44, 62, 80, 0.3);
-  border-radius: 4px;
-}
-
-.admin-users::-webkit-scrollbar-thumb:hover {
-  background: rgba(44, 62, 80, 0.5);
+  .user-grid th,
+  .user-grid td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
 }

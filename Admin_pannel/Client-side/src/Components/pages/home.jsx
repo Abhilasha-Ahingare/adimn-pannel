@@ -23,7 +23,7 @@ const HomePage = () => {
           </div>
           <div className="hero-image">
             <img
-              src="https://source.unsplash.com/600x400/?technology,product"
+              src="https://cdn.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720_1280.jpg"
               alt="Welcome"
             />
           </div>
@@ -41,7 +41,7 @@ const HomePage = () => {
         <div className="about-container-home">
           <div className="about-image-home">
             <img
-              src="https://images.unsplash.com/photo-1506765515384-028b60a970df"
+              src="https://cdn.pixabay.com/photo/2024/06/22/18/09/ai-generated-8846757_1280.jpg"
               alt="About us"
             />
           </div>

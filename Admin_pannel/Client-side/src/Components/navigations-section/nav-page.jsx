@@ -26,7 +26,7 @@ const NavBar = () => {
     <header>
       <div className="header-content">
         <div className="logo-brand">
-          <NavLink to="/">home</NavLink>
+          <a href="/">Home</a>
         </div>
         <button className="mobile-menu-btn" onClick={toggleMenu}>
           {menuOpen ? <FaTimes /> : <FaBars />}

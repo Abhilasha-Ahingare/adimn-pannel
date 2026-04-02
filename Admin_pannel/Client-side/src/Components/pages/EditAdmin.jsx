@@ -5,6 +5,7 @@ import { UserAuth } from "../../store/auth";
 import "./EditAdmin.css";
 const apiUrl = import.meta.env.VITE_SERVER_URL;
 
+
 const EditAdmin = () => {
   const { id } = useParams();
   const [user, setUser] = useState({

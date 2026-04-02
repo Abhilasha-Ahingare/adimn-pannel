@@ -9,7 +9,6 @@ import {
 import { UserAuth } from "../../store/auth";
 import "./AdminLayout.css";
 import { FiMenu, FiX } from "react-icons/fi";
-
 const AdminLayout = () => {
   const { user, isLoading } = UserAuth();
   const location = useLocation();

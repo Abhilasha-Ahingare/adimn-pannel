@@ -4,7 +4,6 @@ import { UserAuth } from "../../store/auth";
 import { FaUser, FaBars, FaTimes } from "react-icons/fa";
 import "../navigations-section/nav-page.css";
 import { toast } from "react-toastify";
-
 const NavBar = () => {
   const { user, isLogIn } = UserAuth();
   const navigate = useNavigate();

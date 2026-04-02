@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./error-page.css";
 
+
 const ErrorPage = () => {
   return (
     <section className="page_404">

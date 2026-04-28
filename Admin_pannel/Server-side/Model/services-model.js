@@ -6,6 +6,7 @@ const ServiceSchema = new Schema({
   price: { type: String, require: true },
 });
 
+
 const seriveModel = new model("Service", ServiceSchema);
 
 module.exports = seriveModel;
